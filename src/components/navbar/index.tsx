@@ -1,13 +1,21 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { useSelector } from 'react-redux';
-import { RootState } from '../../store';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '@/store';
+import { logout } from '@/store/slices/userSlice';
+
 const Navbar = () => {
   const router = useRouter();
+  const dispatch = useDispatch();
   const isAuthenticated = useSelector(
     (state: RootState) => state.user.isAuthenticated
   );
   const { pathname } = router;
+
+  const handleLogout = () => {
+    dispatch(logout());
+    router.push('/');
+  };
 
   return (
     <nav className='p-4 bg-gray-900 text-white shadow-md'>
@@ -51,6 +59,14 @@ const Navbar = () => {
             >
               About
             </Link>
+
+            {}
+            <button
+              onClick={handleLogout}
+              className='text-gray-300 hover:text-orange-400 transition py-2 px-4 rounded-md'
+            >
+              Logout
+            </button>
           </div>
         )}
       </div>

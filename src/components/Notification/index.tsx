@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { clearNotification } from '../../store/slices/notificationSlice';
-import { RootState } from '../../store';
+import { clearNotification } from '@/store/slices/notificationSlice';
+import { RootState } from '@/store';
 
 const Notification = () => {
   const dispatch = useDispatch();
